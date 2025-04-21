@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const globalUrl = 'https://jsonplaceholder.typicode.com';
 
 const albumUrl = '$globalUrl/albums';
@@ -6,3 +8,8 @@ const reqUrl = "https://reqres.in/api/users?page=2";
 
 // api dari mokup api
 const notesUrl = "https://6805f676ca467c15be6a92cd.mockapi.io/notes";
+
+// snackbar
+showSnackBar(BuildContext context, String msg) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_maybank/models/notes.model.dart';
 import 'package:notes_maybank/services/notes_service.dart';
+import 'package:notes_maybank/utils/constant.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({super.key});
@@ -39,7 +40,7 @@ class _NotesPageState extends State<NotesPage> {
           IconButton(
             icon: const Icon(Icons.add_box),
             onPressed: () {
-              // Add your action here
+              Navigator.pushNamed(context, "/add");
             },
           ),
         ],
@@ -75,6 +76,18 @@ class _NotesPageState extends State<NotesPage> {
                               Navigator.pop(context);
                             },
                             child: Text("Cancel"),
+                          ),
+                          TextButton(
+                            onPressed: () async {
+                              await notesService.deleteData(
+                                _listNotes[index].id,
+                              );
+                              Navigator.pop(context);
+                              show();
+                              // snackbar
+                              showSnackBar(context, "Note was deleted");
+                            },
+                            child: Text("Delete"),
                           ),
                         ],
                       );
