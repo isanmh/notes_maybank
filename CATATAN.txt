@@ -1,0 +1,13 @@
+Cara memanggil API :
+- buka pub.dev
+- cari package http
+- copy code contoh dari pub.dev
+- optional network :
+src/main/AndroidManifest.xml
+<uses-permission android:name="android.permission.INTERNET" />
+
+alur  :
+model > service > view/screens
+model > utils > service > view/screens
+
+1 | quidem fasdfkjhaskjfdhdsaf
