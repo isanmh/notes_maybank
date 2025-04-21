@@ -51,8 +51,9 @@ class _PostPageState extends State<PostPage> {
                     elevation: 5,
                     child: ListTile(
                       leading: Icon(Icons.album, color: Colors.deepPurple),
-                      // title: Text(_listPosts[index]['title']),
-                      // subtitle: Text("ID: ${_listPosts[index]['id']}"),
+                      title: Text(_listPosts[index]['title']),
+                      subtitle: Text(_listPosts[index]['body']),
+                      trailing: Icon(Icons.newspaper, color: Colors.deepPurple),
                     ),
                   );
                 },
