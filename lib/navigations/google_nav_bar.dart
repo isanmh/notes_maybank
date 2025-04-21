@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:notes_maybank/pages/album_api.dart';
+import 'package:notes_maybank/pages/notes_page.dart';
 import 'package:notes_maybank/pages/post_page.dart';
 import 'package:notes_maybank/pages/user_page.dart';
 
@@ -13,12 +14,7 @@ class GoogleNavBar extends StatefulWidget {
 
 class _GoogleNavBarState extends State<GoogleNavBar> {
   int currentPage = 0;
-  List<Widget> pages = [
-    PostPage(),
-    AlbumApi(),
-    const Center(child: Text('Notes')),
-    UserPage(),
-  ];
+  List<Widget> pages = [PostPage(), AlbumApi(), NotesPage(), UserPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
