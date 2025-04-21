@@ -12,10 +12,12 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   List<User> users = [];
   UserService userService = UserService();
+  bool isLoading = true;
 
   show() async {
     users = await userService.getUsers();
     setState(() {
+      isLoading = false;
       users = users;
     });
   }
@@ -34,23 +36,28 @@ class _UserPageState extends State<UserPage> {
         foregroundColor: Colors.white,
         backgroundColor: Colors.deepPurple,
       ),
-      body: ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, index) {
-          return Card(
-            elevation: 5,
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(users[index].avatar),
+      body:
+          (isLoading)
+              ? Center(
+                child: CircularProgressIndicator(color: Colors.deepPurple),
+              )
+              : ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 5,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(users[index].avatar),
+                      ),
+                      title: Text(
+                        users[index].first_name + " " + users[index].last_name,
+                      ),
+                      subtitle: Text(users[index].email),
+                    ),
+                  );
+                },
               ),
-              title: Text(
-                users[index].first_name + " " + users[index].last_name,
-              ),
-              subtitle: Text(users[index].email),
-            ),
-          );
-        },
-      ),
     );
   }
 }
