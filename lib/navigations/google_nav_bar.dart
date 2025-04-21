@@ -16,7 +16,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
   List<Widget> pages = [
     PostPage(),
     AlbumApi(),
-    const Center(child: Text('Search')),
+    const Center(child: Text('Notes')),
     const Center(child: Text('Profile')),
   ];
   @override
@@ -42,9 +42,9 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
             haptic: true,
             tabs: [
               GButton(icon: Icons.home, text: 'Home'),
-              GButton(icon: Icons.favorite, text: 'Likes'),
-              GButton(icon: Icons.search, text: 'Search'),
-              GButton(icon: Icons.settings, text: 'Profile'),
+              GButton(icon: Icons.album, text: 'Album'),
+              GButton(icon: Icons.note_add, text: 'Notes'),
+              GButton(icon: Icons.person, text: 'Profile'),
             ],
             onTabChange: (index) {
               setState(() {
