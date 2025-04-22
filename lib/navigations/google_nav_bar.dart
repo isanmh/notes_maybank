@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:notes_maybank/pages/ai_image_generator.dart';
 import 'package:notes_maybank/pages/album_api.dart';
 import 'package:notes_maybank/pages/notes_page.dart';
 import 'package:notes_maybank/pages/post_page.dart';
@@ -14,7 +15,13 @@ class GoogleNavBar extends StatefulWidget {
 
 class _GoogleNavBarState extends State<GoogleNavBar> {
   int currentPage = 0;
-  List<Widget> pages = [PostPage(), AlbumApi(), NotesPage(), UserPage()];
+  List<Widget> pages = [
+    NotesPage(),
+    PostPage(),
+    AlbumApi(),
+    UserPage(),
+    AiImageGenerator(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +45,10 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
             haptic: true,
             tabs: [
               GButton(icon: Icons.home, text: 'Home'),
+              GButton(icon: Icons.newspaper, text: 'News'),
               GButton(icon: Icons.album, text: 'Album'),
-              GButton(icon: Icons.note_add, text: 'Notes'),
               GButton(icon: Icons.person, text: 'Profile'),
+              GButton(icon: Icons.chat, text: 'Chat AI'),
             ],
             onTabChange: (index) {
               setState(() {

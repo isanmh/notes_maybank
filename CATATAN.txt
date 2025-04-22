@@ -11,3 +11,46 @@ model > service > view/screens
 model > utils > service > view/screens
 
 1 | quidem fasdfkjhaskjfdhdsaf
+
+API AI Generator :
+- stability_image_generation > pub.dev
+- daftar ke https://stability.ai/
+
+Cara flutter launcher icon :
+- https://pub.dev/packages/flutter_launcher_icons
+- pubspec.yaml
+  dependencies:
+    flutter_launcher_icons: ^0.14.3
+
+- buat file flutter_launcher_icons.yaml di root project :
+  flutter_launcher_icons:
+    android: "launcher_icon"
+    ios: true
+    image_path: "assets/icon/icon.png"
+    min_sdk_android: 21 # android min sdk min:16, default 21
+
+- jalankan perintah di terminal :
+    flutter pub get
+    dart run flutter_launcher_icons
+- jalankan ulang emulator    
+
+Cara build signed release apk :
+- buka terminal > 
+  java >jdk > bin > keytool.exe
+keytool -genkey -v -keystore $env:USERPROFILE\notes-keystore.jks `
+        -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 `
+        -alias notes
+
+keytool -genkey -v -keystore C:\Users\inixindo\Desktop\notes-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias notes
+
+- buat file android/key.properties
+storePassword=admin123
+keyPassword=admin123
+keyAlias=notes
+storeFile=C:/Users/inixindo/Desktop/notes-keystore.jks
+
+- setting android/app/build.gradle.kts > liat setting di documentation flutter 
+
+build apk signed release :
+flutter build apk
+        

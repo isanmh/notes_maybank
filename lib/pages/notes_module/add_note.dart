@@ -68,7 +68,12 @@ class _AddNoteState extends State<AddNote> {
                     );
                     if (response) {
                       showSnackBar(context, "Note added successfully");
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        "/",
+                        (route) => false,
+                      );
                     } else {
                       showSnackBar(context, "Failed to add note");
                     }

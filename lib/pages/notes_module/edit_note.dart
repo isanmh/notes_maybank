@@ -89,7 +89,12 @@ class _EditNoteState extends State<EditNote> {
                     );
                     if (response) {
                       showSnackBar(context, "Note added successfully");
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        "/",
+                        (route) => false,
+                      );
                     } else {
                       showSnackBar(context, "Failed to update note");
                     }
