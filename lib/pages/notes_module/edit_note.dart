@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:notes_maybank/services/notes_service.dart';
 import 'package:notes_maybank/utils/constant.dart';
 
-class AddNote extends StatefulWidget {
-  const AddNote({super.key});
+class EditNote extends StatefulWidget {
+  const EditNote({super.key});
 
   @override
-  State<AddNote> createState() => _AddNoteState();
+  State<EditNote> createState() => _EditNoteState();
 }
 
-class _AddNoteState extends State<AddNote> {
+class _EditNoteState extends State<EditNote> {
   NotesService notesService = NotesService();
   final titleController = TextEditingController();
   final contentController = TextEditingController();
@@ -19,9 +19,21 @@ class _AddNoteState extends State<AddNote> {
 
   @override
   Widget build(BuildContext context) {
+    // ambil data dari arguments
+    final args = ModalRoute.of(context)!.settings.arguments as List<String>;
+
+    // jika error args
+    // final args =
+    //     (ModalRoute.of(context)!.settings.arguments as List<String>).toList();
+
+    if (args.isNotEmpty) {
+      titleController.text = args[1];
+      contentController.text = args[2];
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add New Note"),
+        title: const Text("Update Note"),
         foregroundColor: Colors.white,
         backgroundColor: Colors.deepPurple,
       ),
@@ -62,7 +74,8 @@ class _AddNoteState extends State<AddNote> {
                   });
                   // validasi jika benar
                   if (validateTitle == false && validateContent == false) {
-                    bool response = await notesService.addData(
+                    bool response = await notesService.updateData(
+                      args[0], // id
                       titleController.text,
                       contentController.text,
                     );
@@ -70,11 +83,11 @@ class _AddNoteState extends State<AddNote> {
                       showSnackBar(context, "Note added successfully");
                       Navigator.pop(context);
                     } else {
-                      showSnackBar(context, "Failed to add note");
+                      showSnackBar(context, "Failed to update note");
                     }
                   }
                 },
-                child: Text("Add Note"),
+                child: Text("Update Note"),
               ),
             ],
           ),
