@@ -26,6 +26,14 @@ class _EditNoteState extends State<EditNote> {
     // final args =
     //     (ModalRoute.of(context)!.settings.arguments as List<String>).toList();
 
+    // final args =
+    //     (ModalRoute.of(context)!.settings.arguments as List<String?>).toList();
+
+    // if (args.isNotEmpty) {
+    //   titleController.text = args[1] ?? "";
+    //   contentController.text = args[2] ?? "";
+    // }
+
     if (args.isNotEmpty) {
       titleController.text = args[1];
       contentController.text = args[2];
