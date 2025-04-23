@@ -1,6 +1,6 @@
-# notes_maybank
+# Final Project notes_maybank
 
-A new Flutter project.
+Training Flutter Maybank on 15 - 22 April 2025
 
 ## Getting Started
 
